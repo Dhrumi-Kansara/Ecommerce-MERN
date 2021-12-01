@@ -14,7 +14,7 @@ mongoose.connect(process.env.MONGO_URL)
         .then(()=>console.log("Database connected successfully"))
         .catch((e)=>console.log(e))
 
-app.use('/api/user', userRoutes)
+app.use('/api/users', userRoutes)
 
 app.listen(PORT, () => {
   console.log(`server started at port ${PORT}`)
