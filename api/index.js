@@ -1,6 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const env = require("dotenv")
+const userRoutes = require("./src/routes/user.route.js")
+const PORT = process.env.PORT || 5000
 const app = express()
 env.config()
 
@@ -12,7 +14,9 @@ mongoose.connect(process.env.MONGO_URL)
         .then(()=>console.log("Database connected successfully"))
         .catch((e)=>console.log(e))
 
-const PORT = process.env.PORT || 5000
+app.use('/api/user', userRoutes)
+
 app.listen(PORT, () => {
   console.log(`server started at port ${PORT}`)
-})
+}) 
+
