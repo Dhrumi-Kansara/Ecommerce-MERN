@@ -6,6 +6,8 @@ const PORT = process.env.PORT || 5000
 const app = express()
 env.config()
 
+app.use(express.json())
+
 app.get("/api/test", (req, res)=>{
   console.log(" test is successfull ")
 })
