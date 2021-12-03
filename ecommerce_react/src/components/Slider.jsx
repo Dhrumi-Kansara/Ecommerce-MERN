@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
-import imgSummerDress from "../utils/images/summerdress.jpg";
+import { sliderItems } from "../helper/data";
+import { useState, useEffect } from "react";
 
 const Container = styled.div`
   width: 100%;
@@ -27,11 +28,14 @@ const Arrow = styled.div`
   right: ${(props) => props.direction === "right" && "10px"};
   opacity: 0.5;
   cursor: pointer;
+  z-index: 2;
 `;
 
 const Wrapper = styled.div`
   height: 100%;
   display: flex;
+  transition: all 2s ease;
+  transform: translateX(${(props) => props.slideIndex * -100}vw);
 `;
 const Slide = styled.div`
   height: 100vh;
@@ -44,9 +48,11 @@ const Slide = styled.div`
 const ImgContainer = styled.div`
   flex: 1;
   height: 100%;
+  text-align: center;
 `;
 const Img = styled.img`
   height: 80%;
+  padding-top: 22px;
 `;
 const InfoContainer = styled.div`
   flex: 1;
@@ -70,52 +76,41 @@ const Button = styled.button`
 `;
 
 const Slider = () => {
+  const [slideIndex, setSlideIndex] = useState(0);
+  const handleClick = (direction) => {
+    console.log(direction);
+    if (direction === "left") {
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
+    } else {
+      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
+    }
+  };
+
+  useEffect(() => {
+    console.log(slideIndex);
+  }, [slideIndex]);
   return (
     <Container>
-      <Arrow direction="left">
+      <Arrow direction="left" onClick={() => handleClick("left")}>
         <ArrowLeftIcon />
       </Arrow>
-      <Arrow direction="right">
+      <Wrapper slideIndex={slideIndex}>
+        {sliderItems.map((row) => (
+          <Slide bg={row.bg}>
+            <ImgContainer>
+              <Img src={row.img} alt="summer dress" />
+            </ImgContainer>
+            <InfoContainer>
+              <Title>{row.title}</Title>
+              <Desc>{row.desc}</Desc>
+              <Button>SHOP NOW</Button>
+            </InfoContainer>
+          </Slide>
+        ))}
+      </Wrapper>
+      <Arrow direction="right" onClick={() => handleClick("right")}>
         <ArrowRightIcon />
       </Arrow>
-      <Wrapper>
-        <Slide bg="f5fafd">
-          <ImgContainer>
-            <Img src={imgSummerDress} alt="summer dress" />
-          </ImgContainer>
-          <InfoContainer>
-            <Title>SUMMER SALE</Title>
-            <Desc>
-              DON`T COMPROMISE ON STYLE! GET FLAT 30% OFF ON NEW ARRIVALS
-            </Desc>
-            <Button>SHOP NOW</Button>
-          </InfoContainer>
-        </Slide>
-        <Slide bg="fcf1ed">
-          <ImgContainer>
-            <Img src={imgSummerDress} alt="summer dress" />
-          </ImgContainer>
-          <InfoContainer>
-            <Title>SUMMER SALE</Title>
-            <Desc>
-              DON`T COMPROMISE ON STYLE! GET FLAT 30% OFF ON NEW ARRIVALS
-            </Desc>
-            <Button>SHOP NOW</Button>
-          </InfoContainer>
-        </Slide>
-        <Slide bg="fbf0f4">
-          <ImgContainer>
-            <Img src={imgSummerDress} alt="summer dress" />
-          </ImgContainer>
-          <InfoContainer>
-            <Title>SUMMER SALE</Title>
-            <Desc>
-              DON`T COMPROMISE ON STYLE! GET FLAT 30% OFF ON NEW ARRIVALS
-            </Desc>
-            <Button>SHOP NOW</Button>
-          </InfoContainer>
-        </Slide>
-      </Wrapper>
     </Container>
   );
 };
