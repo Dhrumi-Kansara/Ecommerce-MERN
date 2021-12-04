@@ -8,7 +8,7 @@ const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
-  postion: relative;
+  position: relative;
   overflow: hidden;
 `;
 
@@ -43,6 +43,7 @@ const Slide = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
   background-color: #${(props) => props.bg};
 `;
 const ImgContainer = styled.div`
@@ -87,7 +88,7 @@ const Slider = () => {
   };
 
   useEffect(() => {
-    console.log(slideIndex);
+    // console.log(slideIndex);
   }, [slideIndex]);
   return (
     <Container>
@@ -96,7 +97,7 @@ const Slider = () => {
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
         {sliderItems.map((row) => (
-          <Slide bg={row.bg}>
+          <Slide bg={row.bg} key={row.id}>
             <ImgContainer>
               <Img src={row.img} alt="summer dress" />
             </ImgContainer>
