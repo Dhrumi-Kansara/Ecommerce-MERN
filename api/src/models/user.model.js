@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const CryptoJS = require("crypto-js")
+const bcrypt = require("bcrypt")
 
 const UserSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
@@ -10,14 +10,33 @@ const UserSchema = new mongoose.Schema({
   {timestamps: true}
 )
 
-UserSchema.pre("save", function(next) {
-  try {
-    let user=this
-    let encrypted = CryptoJS.AES.encrypt(user.password, process.env.PASS_SEC);
-    user.password = encrypted
-    next()
-  } catch(e) {
-    return next(e)
-  }
+UserSchema.pre('save', function (next) {
+  let user = this;
+  bcrypt.hash(user.password, 10, function (err, hash) {
+      if (err) {
+          return next(err);
+      }
+      user.password = hash;
+      next();
+  })
+});
+
+UserSchema.pre('updateOne', function (next) {
+  let password = this.getUpdateOne().$set.password;
+  if(!password) next()
+
+  bcrypt.hash(password, 10, function (err, hash) {
+    if (err) {
+        return next(err);
+    }
+    this.getUpdate().$set.password = hash;
+    next();
 })
+});
+
+UserSchema.methods.validatePassword = (password, hashedPassword) => {
+  let isValid = bcrypt.compareSync(password, hashedPassword);
+  return isValid;
+};
+
 module.exports = mongoose.model("User", UserSchema)
