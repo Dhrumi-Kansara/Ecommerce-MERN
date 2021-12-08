@@ -1,7 +1,7 @@
 const router = require("express").Router()
-const { userUpdate } = require("../controller/user.controller")
-const { verifyToken, verifyTokenAndAuthorizaton } = require("../middleware/verifyToken")
+const userController = require("../controller/user.controller")
+const tokenVerification = require("../middleware/verifyToken")
 
-router.put("/", verifyTokenAndAuthorizaton ,userUpdate)
+router.put("/:id", tokenVerification.verifyTokenAndAuthorizaton ,  userController.userUpdate)
 
 module.exports = router
