@@ -6,7 +6,10 @@ const verifyToken = (req, res, next) => {
   if(authHeader) {
     const token = authHeader.split(" ")[1]
      jwt.verify(token, process.env.JWT_SEC, (err, user)=>{
-        if(err) return res.json(response.generate(true, "Token is not valid!", 401, null)) 
+        if(err) {
+          console.log(err)
+          return res.json(response.generate(true, "Token is not valid!", 401, null)) 
+        } 
         req.user = user;
         next();
      })
@@ -25,5 +28,16 @@ const verifyTokenAndAuthorizaton = (req, res, next) => {
   }) 
 }
 
+const verifyTokenAndAdmin = (req, res, next) => {
+  verifyToken(req, res, ()=> {
+    if(req.user.isAdmin) {
+      next()
+    } else {
+      res.json(response.generate(true, "You are not allowed to do that!", 500, null)) 
+    }
+  }) 
+}
 
-module.exports = { verifyToken, verifyTokenAndAuthorizaton }
+
+
+module.exports = { verifyToken, verifyTokenAndAuthorizaton, verifyTokenAndAdmin }

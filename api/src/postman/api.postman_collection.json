@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"hella\",\r\n    \"email\": \"hella@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+					"raw": "{\r\n    \"username\": \"loki\",\r\n    \"email\": \"loki@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -41,7 +41,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\":\"thor\",\r\n    \"password\":\"123456\"\r\n}",
+					"raw": "{\r\n    \"username\":\"loki\",\r\n    \"password\":\"123456\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -66,8 +66,14 @@
 		{
 			"name": "UPDATE USER",
 			"request": {
-				"method": "POST",
-				"header": [],
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYWY1MDAyODUxZTczZjA1ZDk2ZTQ0NCIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MzkwMjU2NzEsImV4cCI6MTYzOTI4NDg3MX0.9O4ptaf2DW-PVmKaVgqKxiKTReSc4jDYCRUvx2dRY14",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"username\": \"loki1\"\r\n}",
@@ -78,16 +84,42 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:5000/api/auth/user/",
+					"raw": "localhost:5000/api/users/61af5002851e73f05d96e444",
 					"host": [
 						"localhost"
 					],
 					"port": "5000",
 					"path": [
 						"api",
-						"auth",
-						"user",
-						""
+						"users",
+						"61af5002851e73f05d96e444"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FIND USER BY ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYjZkNDdmOGU2MDZjYWVmYTFhMmMyNCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzOTM3MTk0NiwiZXhwIjoxNjM5NjMxMTQ2fQ.9ciMjoySdymvoQSesSr0PahR6UVzz9D9vgV1MMBXyWw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/api/users/find/61af5002851e73f05d96e444",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"find",
+						"61af5002851e73f05d96e444"
 					]
 				}
 			},
