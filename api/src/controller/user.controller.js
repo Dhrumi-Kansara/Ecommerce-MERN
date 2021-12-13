@@ -3,7 +3,7 @@ const response = require("../helper/response.js")
 const validation = require("../helper/validation")
 const constant = require("../helper/constant")
 
-const userUpdate = async (req, res) => {
+const updateUser = async (req, res) => {
   try {
     if(validation.isNotValidUserUpdate(req.params.id)) return res.json(response.generate(true, constant.required, 500, null)) 
 
@@ -21,7 +21,7 @@ const userUpdate = async (req, res) => {
   } 
 }
 
-const userDelete = async (req, res) => {
+const deleteUser = async (req, res) => {
   try {
     await User.findByIdAndDelete(req.params.id)
     res.json(response.generate(false, constant.success, 200, null)) 
@@ -33,7 +33,7 @@ const userDelete = async (req, res) => {
   } 
 }
 
-const usersFind = async (req, res) => {
+const findUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.id)
 
@@ -48,8 +48,24 @@ const usersFind = async (req, res) => {
   } 
 }
 
+const findUsers = async (req, res) => {
+  try {
+    const query = req.query.new
+
+    const users = query
+    ? await User.find().sort({_id: -1}).limit(1)
+    : await User.find()
+    res.json(response.generate(false, constant.success, 200, users)) 
+  }
+  catch(e) {
+    console.log(e)
+     res.json(response.generate(true, constant.serverError, 500, null)) 
+  } 
+}
+
 module.exports = {
-  usersFind,
-  userUpdate,
-  userDelete
+  updateUser,
+  deleteUser,
+  findUser,
+  findUsers
 }
