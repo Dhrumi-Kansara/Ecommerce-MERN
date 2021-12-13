@@ -4,6 +4,8 @@ import Announcement from "../components/Announcement";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 import ProductImg from "../utils/images/productPage1.jpg";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -65,6 +67,15 @@ const FilterSize = styled.select`
 `;
 const FilterSizeOption = styled.option``;
 
+const AddContainer = styled.div`
+  display: flex;
+  width: 50%;
+  align-items: center;
+`;
+const AmountContainer = styled.div``;
+const Amount = styled.span``;
+const Button = styled.button``;
+
 const Product = () => {
   return (
     <Container>
@@ -101,9 +112,16 @@ const Product = () => {
               </FilterSize>
             </Filter>
           </FilterContainer>
+          <AddContainer>
+            <AmountContainer>
+              <RemoveIcon />
+              <Amount>1</Amount>
+              <AddIcon />
+            </AmountContainer>
+            <Button>Add To Cart</Button>
+          </AddContainer>
         </InfoContainer>
       </Wrapper>
-
       <Newsletter />
       <Footer />
     </Container>
