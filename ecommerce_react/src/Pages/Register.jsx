@@ -9,6 +9,7 @@ const Container = styled.div`
       rgba(255, 255, 255, 0.5)
     ),
     url(${registerImg}) no-repeat center;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
