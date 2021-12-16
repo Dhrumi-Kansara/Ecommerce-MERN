@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"loki\",\r\n    \"email\": \"loki@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+					"raw": "{\r\n    \"username\": \"thor\",\r\n     \"password\": \"123456\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -41,7 +41,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\":\"loki\",\r\n    \"password\":\"123456\"\r\n}",
+					"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"123456\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -70,7 +70,7 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYWY1MDAyODUxZTczZjA1ZDk2ZTQ0NCIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MzkwMjU2NzEsImV4cCI6MTYzOTI4NDg3MX0.9O4ptaf2DW-PVmKaVgqKxiKTReSc4jDYCRUvx2dRY14",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYWY1MDAyODUxZTczZjA1ZDk2ZTQ0NCIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MzkzNzA5MzUsImV4cCI6MTYzOTYzMDEzNX0.OENhiW8VkpKv9tc_Z_AQ1BkNDKmin2cU0z-KpM6I5eA",
 						"type": "text"
 					}
 				],
@@ -99,7 +99,7 @@
 			"response": []
 		},
 		{
-			"name": "FIND USER BY ID",
+			"name": "GET USERS",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -110,7 +110,7 @@
 					}
 				],
 				"url": {
-					"raw": "localhost:5000/api/users/find/61af5002851e73f05d96e444",
+					"raw": "localhost:5000/api/users/",
 					"host": [
 						"localhost"
 					],
@@ -118,8 +118,32 @@
 					"path": [
 						"api",
 						"users",
-						"find",
-						"61af5002851e73f05d96e444"
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL USERS",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYjZkNDdmOGU2MDZjYWVmYTFhMmMyNCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzOTQwMTk1OSwiZXhwIjoxNjM5NjYxMTU5fQ.ARhAyX-roUwXSxxcc4zaLzg6y0do7RSp3w9iEBC3QX0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users"
 					]
 				}
 			},

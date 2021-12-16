@@ -33,7 +33,7 @@ const deleteUser = async (req, res) => {
   } 
 }
 
-const findUser = async (req, res) => {
+const fetchUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.id)
 
@@ -48,7 +48,7 @@ const findUser = async (req, res) => {
   } 
 }
 
-const findUsers = async (req, res) => {
+const fetchAllUsers = async (req, res) => {
   try {
     const query = req.query.new
 
@@ -63,9 +63,22 @@ const findUsers = async (req, res) => {
   } 
 }
 
+const fetchUserStats = async (req, res) => {
+  const date = new Date()
+  const lastYear = new Date(date.setFullYear(date.getFullYear()-1))
+
+  try {
+
+  } catch(e) {
+    console.log(e)
+    res.json(response.generate(true, constant.serverError, 500, null)) 
+  }
+}
+
 module.exports = {
   updateUser,
   deleteUser,
-  findUser,
-  findUsers
+  fetchUser,
+  fetchAllUsers,
+  fetchUserStats
 }
