@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile } from "../responsive";
 import registerImg from "../utils/images/register_page.jpeg";
 
 const Container = styled.div`
@@ -18,6 +19,7 @@ const Wrapper = styled.div`
   width: 40%;
   padding: 20px;
   background-color: white;
+  ${mobile({ width: "75%" })}
 `;
 const Title = styled.h1`
   font-size: 24px;
@@ -46,6 +48,7 @@ const Button = styled.button`
   color: white;
   padding: 15px 20px;
   cursor: pointer;
+  ${mobile({ width: "100%" })}
 
   &:hover {
     background-color: #006767;

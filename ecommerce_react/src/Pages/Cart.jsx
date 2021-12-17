@@ -6,10 +6,12 @@ import cartPageImg1 from "../utils/images/cart_page.png";
 import cartPageImg2 from "../utils/images/cart_page2.png";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import { mobile } from "../responsive";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 20px;
+  ${mobile({ padding: "10px" })}
 `;
 const Title = styled.h1`
   font-weight: 300;
@@ -34,7 +36,9 @@ const TopButton = styled.button`
     color: white;
   }
 `;
-const TopTexts = styled.div``;
+const TopTexts = styled.div`
+  ${mobile({ display: "none" })}
+`;
 const TopText = styled.span`
   margin: 0 10px;
   padding-bottom: 5px;
@@ -44,6 +48,7 @@ const TopText = styled.span`
 const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
+  ${mobile({ flexDirection: "column" })}
 `;
 const Info = styled.div`
   flex: 3;
@@ -52,6 +57,7 @@ const Info = styled.div`
 const Product = styled.div`
   display: flex;
   justify-content: space-between;
+  ${mobile({ flexDirection: "column" })}
 `;
 const ProductDetail = styled.div`
   flex: 2;
@@ -59,6 +65,7 @@ const ProductDetail = styled.div`
 `;
 const Image = styled.img`
   width: 200px;
+  ${mobile({ width: "150px" })}
 `;
 const Details = styled.div`
   padding: 20px;
@@ -81,6 +88,7 @@ const PriceDetail = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  ${mobile({ flexDirection: "row", justifyContent: "space-around" })}
 `;
 const ProductAmountContainer = styled.div`
   display: flex;
@@ -91,13 +99,15 @@ const ProductAmountContainer = styled.div`
 const ProductAmount = styled.span`
   font-size: 24px;
   margin: 5px;
-  border: 1px solid teal;
+
   border-radius: 8px;
   padding: 4px 8px;
+  ${mobile({ margin: "5px 15px" })}
 `;
 const ProductPrice = styled.span`
   font-size: 30px;
   font-weight: 200;
+  ${mobile({ marginBottom: "20px" })}
 `;
 
 const Hr = styled.hr`
@@ -158,10 +168,12 @@ const Cart = () => {
                 <Image src={cartPageImg1} />
                 <Details>
                   <ProductName>
-                    <strong>Product:</strong> BLACK META SHOES
+                    {/* <strong>Product:</strong> */}
+                    BLACK META SHOES
                   </ProductName>
                   <ProductId>
-                    <strong>ID:</strong> 9856712938
+                    {/* <strong>ID:</strong>  */}
+                    9856712938
                   </ProductId>
                   <ProductColor color="black" />
                   <ProductSize>
@@ -184,10 +196,12 @@ const Cart = () => {
                 <Image src={cartPageImg2} />
                 <Details>
                   <ProductName>
-                    <strong>Product:</strong> MATRIX T-SHIRT
+                    {/* <strong>Product:</strong>  */}
+                    MATRIX T-SHIRT
                   </ProductName>
                   <ProductId>
-                    <strong>ID:</strong> 9856712967
+                    {/* <strong>ID:</strong>  */}
+                    9856712967
                   </ProductId>
                   <ProductColor color="gray" />
                   <ProductSize>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile } from "../responsive";
 import loginImg from "../utils/images/login_page.jpeg";
 
 const Container = styled.div`
@@ -19,6 +20,7 @@ const Wrapper = styled.div`
   width: 25%;
   padding: 20px;
   background-color: white;
+  ${mobile({ width: "75%" })}
 `;
 const Title = styled.h1`
   font-size: 24px;
@@ -44,11 +46,13 @@ const Button = styled.button`
   padding: 15px 20px;
   cursor: pointer;
   margin-bottom: 10px;
+  margin: 0 auto;
 
   &:hover {
     background-color: #006767;
     color: white;
   }
+  ${mobile({ width: "100%" })}
 `;
 const Link = styled.a`
   margin: 5px 0px;
