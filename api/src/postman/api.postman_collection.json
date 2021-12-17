@@ -148,6 +148,58 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "USERS STATS",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYjZkNDdmOGU2MDZjYWVmYTFhMmMyNCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzOTQwMTk1OSwiZXhwIjoxNjM5NjYxMTU5fQ.ARhAyX-roUwXSxxcc4zaLzg6y0do7RSp3w9iEBC3QX0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/api/users/stats",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD PRODUCT",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYjZkNDdmOGU2MDZjYWVmYTFhMmMyNCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzOTQwMTk1OSwiZXhwIjoxNjM5NjYxMTU5fQ.ARhAyX-roUwXSxxcc4zaLzg6y0do7RSp3w9iEBC3QX0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/api/users/stats",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"stats"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

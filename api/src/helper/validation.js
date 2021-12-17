@@ -16,5 +16,14 @@ module.exports = {
     if (!id ) 
         return true;
     return false;
+  },
+  isNotValidCreateProduct(body) {
+    if (!body.title || 
+      !body.desc ||
+      !body.img || 
+      !body.price
+      ) 
+        return true;
+    return false;
   }
 }

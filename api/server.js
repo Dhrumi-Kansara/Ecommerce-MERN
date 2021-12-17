@@ -21,12 +21,12 @@ app.get("/api/test", (req, res)=>{
 mongoose.connect(process.env.MONGO_URL) 
         .then(()=>console.log("Database connected successfully"))
         .catch((e)=>console.log(e))
-
-app.use('/api/users', userRoutes)
+        
 app.use('/api/auth', authRoutes)
-app.use('/api/product', productRoutes)
+app.use('/api/users', userRoutes)
+app.use('/api/products', productRoutes)
 app.use('/api/cart', cartRoutes)
-app.use('/api/order', orderRoutes)
+app.use('/api/orders', orderRoutes)
 
 app.listen(PORT, () => {
   console.log(`server started at port ${PORT}`)

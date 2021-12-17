@@ -64,10 +64,23 @@ const fetchAllUsers = async (req, res) => {
 }
 
 const fetchUserStats = async (req, res) => {
-  const date = new Date()
-  const lastYear = new Date(date.setFullYear(date.getFullYear()-1))
-
   try {
+    const date = new Date()
+    const lastYear = new Date(date.setFullYear(date.getFullYear()-1))
+    const data = await User.aggregate([
+      { $match: {createdAt: { $gte:  lastYear  }}},
+      { $project: {
+        month: {$month: '$createdAt'}
+      }},
+      {
+        $group: {
+          _id: "$month",
+          total: { $sum: 1}
+        }
+      }
+    ])
+    res.json(response.generate(false, constant.success, 200, data)) 
+
 
   } catch(e) {
     console.log(e)
